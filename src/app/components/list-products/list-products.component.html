@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Takum</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <button class="btn btn-primary" (click)="clickAddProduct()">Nuevo Producto</button>
+        <!--a class="nav-link" href="#">Nuevo Producto <span class="sr-only">(current)</span></a-->
+      </li>
+      <li class="nav-item">
+        &nbsp;
+      </li>
+      <li class="nav-item">
+          <button class="btn btn-success" (click)="clickLogout()">Logout</button>
+          <!--a class="nav-link" href="#">Nuevo Producto <span class="sr-only">(current)</span></a-->
+      </li>
+    </ul>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">{{ currentUser.slice(1, -1) }}</li>
+    </ol>
+  </div>
+</nav>
+
+
+<div class="row mt-5">
+    <div class="col">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; index as i">
+  
+            <th scope="row"> {{product.id}}</th>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.costs}}$</td>
+            <td>{{product.rol}}</td>
+            <td>{{product.category}}</td>
+            <td>
+              <button class="btn btn-primary" (click)="onPreUpdateBook(book)" data-toggle="modal" data-target="#modalBook">Update</button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="onDeleteProduct(product.id)">Eliminar</button>
+            </td>
+          </tr>
+  
+        </tbody>
+      </table>
+    </div>
+  </div>
